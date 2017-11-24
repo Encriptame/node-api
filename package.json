@@ -3,7 +3,7 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Encriptame/users-service
+    "url": "git://github.com/Encriptame/users-service"
   },
   "scripts": {
     "start": "node server.js"
