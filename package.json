@@ -3,12 +3,12 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/scotch-io/node-token-authentication"
+    "url": "git://github.com/Encriptame/users-service
   },
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Chris Sevilleja <scotch.io>",
+  "author": "Guido Barosio <encriptame.com>",
   "license": "MIT",
   "dependencies": {
     "express": "~4.16.1",
