@@ -10,11 +10,12 @@ var morgan     = require('morgan');
 // configure app
 app.use(morgan('dev')); // log requests to the console
 
+app.listen(80,'104.236.175.239');
+
 // configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 8080; // set our port
 
 // DATABASE SETUP
 var mongoose   = require('mongoose');
@@ -180,5 +181,4 @@ app.use('/api', router);
 
 // START THE SERVER
 // =============================================================================
-app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Magic happens on port ' + 80);
