@@ -6,7 +6,7 @@ var UsersSchema   = new Schema({
 	email: String,
 	emailme: Boolean,
 	requestDemo: Boolean,
-	created: Date,
+	created: {type: "date"},
 	status: Boolean,
 	password: String
 });

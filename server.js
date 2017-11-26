@@ -30,8 +30,9 @@ db.once('openUri', function() {
 });
 
 // User models lives here
-var User     = require('./app/models/user');
-
+var User     	= require('./app/models/user');
+// Session model lives here
+var Session 	= require('./app/models/session');
 // ROUTES FOR OUR API
 // =============================================================================
 
@@ -129,6 +130,49 @@ router.route('/users/:user_id')
 			res.json({ message: 'Successfully deleted' });
 		});
 	});
+
+// on session routes
+router.route('/session')
+       // create a user session (accessed at POST http://localhost:8080/api/session)
+        .post(function(req, res) {
+
+                var session               	= new Session();        
+		session.email               	= req.body.email;  
+		session.created			= req.body.created;
+                session.status             	= req.body.status;
+		session.token			= req.body.token; // requires a token from somewhere else at the moment
+
+
+                session.save(function(err) {
+                        if (err)
+                                res.send(err);
+
+                        res.json({ message: 'session created!' });
+                });
+        })
+	// finds all the active tokens
+        .get(function(req, res) {
+                Session.find(function(err, sessions) {
+                        if (err)
+                                res.send(err);
+
+                        res.json(sessions);
+                });
+        });
+
+	
+/ on routes that end in /users/:user_id
+// ----------------------------------------------------
+router.route('/session/:session_id')
+
+        .get(function(req, res) {
+                Session.findById(req.params.session_id, function(err, session) {
+                        if (err)
+                                res.send(err);
+                        res.json(session);
+                });
+        })
+
 
 
 // REGISTER OUR ROUTES -------------------------------
